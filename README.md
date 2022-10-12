@@ -1,6 +1,6 @@
 # webtechprojekt
 Mitglieder:
-Dean Mayhew     s
+Dean Mayhew     s0582296
 Florian Heimann s0583522
 
 Projektbeschreibung:
