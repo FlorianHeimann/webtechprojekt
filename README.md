@@ -5,4 +5,4 @@ Florian Heimann s0583522
 
 Projektbeschreibung:
 
-Erstellung einer ToDo-Liste, die Funktionen wie zb Datum, Login, Erinnerungen 
+Erstellung einer ToDo-Liste, die Funktionen wie zb Datum, Login, Erinnerungen beinhaltet
