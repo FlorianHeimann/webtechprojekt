@@ -2,28 +2,18 @@ package webtech.web.api;
 
 import java.time.LocalDate;
 
-public class ToDo {
+public class ToDoCreateRequest {
 
-    private long id;
     private String task;
     private boolean isDone;
     private LocalDate created;
     private LocalDate dueTo;
 
-    public ToDo(long id, String task, boolean isDone, LocalDate created, LocalDate dueTo) {
-        this.id = id;
+    public ToDoCreateRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo) {
         this.task = task;
         this.isDone = isDone;
         this.created = created;
         this.dueTo = dueTo;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getTask() {
