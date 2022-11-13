@@ -2,14 +2,14 @@ package webtech.web.api;
 
 import java.time.LocalDate;
 
-public class ToDoCreateRequest {
+public class ToDoManipulationRequest {
 
     private String task;
     private boolean isDone;
     private LocalDate created;
     private LocalDate dueTo;
 
-    public ToDoCreateRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo) {
+    public ToDoManipulationRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo) {
         this.task = task;
         this.isDone = isDone;
         this.created = created;
