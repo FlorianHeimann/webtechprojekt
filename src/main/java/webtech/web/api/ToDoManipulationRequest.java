@@ -16,6 +16,8 @@ public class ToDoManipulationRequest {
         this.dueTo = dueTo;
     }
 
+    public ToDoManipulationRequest(){}
+
     public String getTask() {
         return task;
     }
