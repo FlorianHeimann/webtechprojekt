@@ -6,6 +6,7 @@ import webtech.service.ToDoService;
 import webtech.web.api.ToDo;
 import webtech.web.api.ToDoManipulationRequest;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -31,7 +32,7 @@ public class ToDoListRestController {
     }
 
     @PostMapping(path ="/api/v1/toDos")
-    public ResponseEntity<Void> createToDo(@RequestBody ToDoManipulationRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createToDo(@Valid @RequestBody ToDoManipulationRequest request) throws URISyntaxException {
         var toDo = toDoService.create(request);
         URI uri = new URI("/api/v1/toDos/" + toDo.getId());
         return ResponseEntity.created(uri).build();
@@ -47,5 +48,4 @@ public class ToDoListRestController {
         boolean successful = toDoService.deleteById(id);
         return successful? ResponseEntity.ok().build(): ResponseEntity.notFound().build();
     }
-
 }

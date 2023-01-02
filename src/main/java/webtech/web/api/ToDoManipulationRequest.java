@@ -1,12 +1,20 @@
 package webtech.web.api;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 public class ToDoManipulationRequest {
 
+    @NotBlank(message = "The Task must not be empty")
     private String task;
+    @NotNull
     private boolean isDone;
+    @NotNull
     private LocalDate created;
+    @NotNull
     private LocalDate dueTo;
 
     public ToDoManipulationRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo) {
