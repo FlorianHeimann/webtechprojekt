@@ -23,11 +23,15 @@ public class ToDoEntity {
     @Column(name = "dueTo")
     private LocalDate dueTo;
 
-    public ToDoEntity(String task, boolean isDone, LocalDate created, LocalDate dueTo) {
+    @Column(name = "owner")
+    private String owner;
+
+    public ToDoEntity(String task, boolean isDone, LocalDate created, LocalDate dueTo, String owner) {
         this.task = task;
         this.isDone = isDone;
         this.created = created;
         this.dueTo = dueTo;
+        this.owner = owner;
     }
 
     protected ToDoEntity(){}
@@ -66,5 +70,13 @@ public class ToDoEntity {
 
     public void setDueTo(LocalDate dueTo) {
         this.dueTo = dueTo;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

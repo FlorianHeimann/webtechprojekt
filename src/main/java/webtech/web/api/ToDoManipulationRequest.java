@@ -16,12 +16,15 @@ public class ToDoManipulationRequest {
     private LocalDate created;
     @NotNull
     private LocalDate dueTo;
+    @NotNull
+    private String owner;
 
-    public ToDoManipulationRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo) {
+    public ToDoManipulationRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo, String owner) {
         this.task = task;
         this.isDone = isDone;
         this.created = created;
         this.dueTo = dueTo;
+        this.owner = owner;
     }
 
     public ToDoManipulationRequest(){}
@@ -56,5 +59,13 @@ public class ToDoManipulationRequest {
 
     public void setDueTo(LocalDate dueTo) {
         this.dueTo = dueTo;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

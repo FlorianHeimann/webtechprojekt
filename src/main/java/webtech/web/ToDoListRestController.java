@@ -21,8 +21,8 @@ public class ToDoListRestController {
     }
 
     @GetMapping(path = "/api/v1/toDos")
-    public ResponseEntity<List<ToDo>> fetchToDos(){
-        return ResponseEntity.ok(toDoService.findAll());
+    public ResponseEntity<List<ToDo>> fetchToDos(@RequestParam("owner") String owner){
+        return ResponseEntity.ok(toDoService.findAllByOwner(owner));
     }
 
     @GetMapping(path = "/api/v1/toDos/{id}")

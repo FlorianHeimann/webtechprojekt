@@ -9,13 +9,15 @@ public class ToDo {
     private boolean isDone;
     private LocalDate created;
     private LocalDate dueTo;
+    private String owner;
 
-    public ToDo(long id, String task, boolean isDone, LocalDate created, LocalDate dueTo) {
+    public ToDo(long id, String task, boolean isDone, LocalDate created, LocalDate dueTo, String owner) {
         this.id = id;
         this.task = task;
         this.isDone = isDone;
         this.created = created;
         this.dueTo = dueTo;
+        this.owner = owner;
     }
 
     public long getId() {
@@ -56,5 +58,13 @@ public class ToDo {
 
     public void setDueTo(LocalDate dueTo) {
         this.dueTo = dueTo;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }
