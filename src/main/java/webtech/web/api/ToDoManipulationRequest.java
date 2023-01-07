@@ -16,7 +16,6 @@ public class ToDoManipulationRequest {
     private LocalDate created;
     @NotNull
     private LocalDate dueTo;
-    @NotNull
     private String owner;
 
     public ToDoManipulationRequest(String task, boolean isDone, LocalDate created, LocalDate dueTo, String owner) {
