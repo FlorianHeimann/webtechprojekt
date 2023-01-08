@@ -15,14 +15,16 @@ import java.util.stream.Collectors;
 public class ToDoService {
 
     private final ToDoRepository toDoRepository;
+    private final ToDoTransformer toDoTransformer;
 
-    public ToDoService(ToDoRepository toDoRepository){
+    public ToDoService(ToDoRepository toDoRepository, ToDoTransformer toDoTransformer){
         this.toDoRepository = toDoRepository;
+        this.toDoTransformer = toDoTransformer;
     }
 
     public List<ToDo> findAll(){
         List<ToDoEntity> toDos = toDoRepository.findAll();
-        return toDos.stream().map(toDoEntity -> transformEntity(toDoEntity)).collect(Collectors.toList());
+        return toDos.stream().map(toDoEntity -> toDoTransformer.transformEntity(toDoEntity)).collect(Collectors.toList());
     }
 
     public List<ToDo> findAllByOwner(String owner){
@@ -31,7 +33,7 @@ public class ToDoService {
 
         for(ToDoEntity toDo : toDos) {
             if(toDo.getOwner() != null && toDo.getOwner().equals(owner)){
-                transformedToDos.add(transformEntity(toDo));
+                transformedToDos.add(toDoTransformer.transformEntity(toDo));
             }
         }
 
@@ -40,13 +42,13 @@ public class ToDoService {
 
     public ToDo findById(Long id){
         var toDoEntity = toDoRepository.findById(id);
-        return toDoEntity.isPresent() ? transformEntity(toDoEntity.get()) : null;
+        return toDoEntity.isPresent() ? toDoTransformer.transformEntity(toDoEntity.get()) : null;
     }
 
     public ToDo create(ToDoManipulationRequest request){
         var toDoEntity = new ToDoEntity(request.getTask(), request.isDone(), request.getCreated(), request.getDueTo(), request.getOwner());
         toDoEntity = toDoRepository.save(toDoEntity);
-        return transformEntity(toDoEntity);
+        return toDoTransformer.transformEntity(toDoEntity);
     }
 
     public ToDo update(Long id, ToDoManipulationRequest request){
@@ -62,7 +64,7 @@ public class ToDoService {
 
         toDoEntity = toDoRepository.save(toDoEntity);
 
-        return transformEntity(toDoEntity);
+        return toDoTransformer.transformEntity(toDoEntity);
     }
 
     public boolean deleteById(Long id){
@@ -72,16 +74,5 @@ public class ToDoService {
 
         toDoRepository.deleteById(id);
         return true;
-    }
-
-    private ToDo transformEntity(ToDoEntity toDoEntity){
-        return new ToDo(
-                toDoEntity.getId(),
-                toDoEntity.getTask(),
-                toDoEntity.isDone(),
-                toDoEntity.getCreated(),
-                toDoEntity.getDueTo(),
-                toDoEntity.getOwner()
-        );
     }
 }
