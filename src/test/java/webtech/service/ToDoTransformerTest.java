@@ -15,8 +15,8 @@ class ToDoTransformerTest implements WithAssertions {
     private final ToDoTransformer underTest = new ToDoTransformer();
 
     @Test
-    @DisplayName("should transform PersonEntity to Person")
-    void should_transform_person_entity_to_person() {
+    @DisplayName("should transform ToDoEntity to ToDo")
+    void should_transform_toDo_entity_to_toDo() {
         LocalDate dateNow = LocalDate.now();
 
         // given
@@ -41,8 +41,8 @@ class ToDoTransformerTest implements WithAssertions {
     }
 
     @Test
-    @DisplayName("should transform PersonEntity to Person")
-    void should_fail_to_transform_person_entity_to_person_with_Task() {
+    @DisplayName("should fail to transform ToDo to ToDo")
+    void should_fail_to_transform_toDo_entity_to_toDo_with_Task() {
         LocalDate dateNow = LocalDate.now();
 
         // given
@@ -67,8 +67,8 @@ class ToDoTransformerTest implements WithAssertions {
     }
 
     @Test
-    @DisplayName("should transform PersonEntity to Person")
-    void should_fail_to_transform_person_entity_to_person_with_DueTo() {
+    @DisplayName("should fail to transform ToDoEntity to ToDo")
+    void should_fail_to_transform_toDo_entity_to_toDo_with_DueTo() {
         LocalDate dateNow = LocalDate.now();
 
         // given
